@@ -1,5 +1,5 @@
 {
-    "name": "gtin-validator",
+    "name": "@linvix-sistemas/gtin-validator",
     "version": "1.0.0",
     "description": "Utilities to validate and work with GTIN and UPC product codes.",
     "main": "lib/index.js",
@@ -10,58 +10,25 @@
         "lint:fix": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix",
         "prebuild": "npm run lint",
         "build": "tsc",
-        "test": "jest"
+        "test": "jest",
+        "release": "release-it"
     },
     "files": [
         "lib/**/*"
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/GunCompare/gtin-validator.git"
+        "url": "git+https://github.com/linvix-sistemas/gtin-validator.git"
     },
-    "keywords": [
-        "gtin",
-        "gtin-12",
-        "gtin12",
-        "gtin-13",
-        "gtin13",
-        "gtin-14",
-        "gtin14",
-        "valid",
-        "validation",
-        "validator",
-        "upc",
-        "upc12",
-        "upc-12",
-        "upc-8",
-        "upc8",
-        "upca",
-        "upc-a",
-        "upce",
-        "upc-e",
-        "ucc",
-        "ucc12",
-        "ucc-12",
-        "ean",
-        "ean-13",
-        "ean13",
-        "itf",
-        "itf13",
-        "itf-13",
-        "itf14",
-        "itf-14",
-        "product codes",
-        "jan",
-        "jan-13",
-        "jan13"
-    ],
-    "author": "GunCompare",
+    "keywords": [],
+    "author": "Linvix Sistemas",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/GunCompare/gtin-validator/issues"
+        "url": "https://github.com/linvix-sistemas/gtin-validator/issues"
     },
-    "homepage": "https://guncompare.com/gtin-validator-package-docs/",
+    "homepage": "https://github.com/linvix-sistemas/gtin-validator",
     "devDependencies": {
+        "@release-it/conventional-changelog": "^8.0.1",
         "@types/jest": "^29.1.2",
         "@typescript-eslint/eslint-plugin": "^6.12.0",
         "@typescript-eslint/parser": "^6.12.0",
@@ -72,7 +39,25 @@
         "eslint-plugin-prettier": "^5.0.1",
         "jest": "^29.1.2",
         "prettier": "^3.1.0",
+        "release-it": "^17.0.0",
         "ts-jest": "^29.0.3",
         "typescript": "^4.8.4"
+    },
+    "release-it": {
+        "git": {
+            "commitMessage": "release ${version}",
+            "tagName": "v${version}"
+        },
+        "npm": {
+            "publish": false
+        },
+        "github": {
+            "release": true
+        },
+        "plugins": {
+            "@release-it/conventional-changelog": {
+                "preset": "angular"
+            }
+        }
     }
 }
