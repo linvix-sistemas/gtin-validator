@@ -1,4 +1,5 @@
 import { isValidCheckDigitOnGTIN } from "./isValidCheckDigitOnGTIN"
+import { isValidPrefixOfGTIN } from "./isValidPrefixOfGTIN"
 
 /**
  * @description Determines whether the provided productCode is a valid GTIN.
@@ -24,5 +25,7 @@ export function isValidGTIN(
   productCode: string,
   returnBooleanOrThrowError: "boolean" | "error" = "boolean",
 ) {
-  return isValidCheckDigitOnGTIN(productCode, returnBooleanOrThrowError)
+  if (!isValidCheckDigitOnGTIN(productCode, returnBooleanOrThrowError)) return false
+
+  return isValidPrefixOfGTIN(productCode, returnBooleanOrThrowError)
 }
