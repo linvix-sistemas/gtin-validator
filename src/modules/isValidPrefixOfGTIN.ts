@@ -17,11 +17,9 @@ export function isValidPrefixOfGTIN(productCode: string, returnBooleanOrThrowErr
 
         const nIni = prefix.nIni;
         const nFim = prefix.nFim;
-        const region = prefix.region;
 
         if (gtinPrefix >= nIni && gtinPrefix <= nFim) {
             isValid = true;
-            return region;
         }
     }
 
