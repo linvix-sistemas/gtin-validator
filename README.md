@@ -1,19 +1,23 @@
 # gtin-validator
 
-![npm](https://img.shields.io/npm/v/gtin-validator)
-![build](https://github.com/GunCompare/gtin-validator/actions/workflows/node.js.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/GunCompare/gtin-validator/badge.svg)](https://coveralls.io/github/GunCompare/gtin-validator)
-![NPM](https://img.shields.io/npm/l/gtin-validator)
+![npm](https://img.shields.io/npm/v/%40linvix-sistemas%2Fgtin-validator)
+![build](https://github.com/linvix-sistemas/gtin-validator/actions/workflows/npm-publish.yml/badge.svg)
+![NPM](https://img.shields.io/npm/l/%40linvix-sistemas%2Fgtin-validator)
 
 gtin-validator allows you to validate and work with GTIN, UPC, and other product code formats.
 
-```
-npm i gtin-validator
+```bash
+npm i @linvix-sistemas/gtin-validator
 ```
 
-```javascript
+```bash
+yarn add @linvix-sistemas/gtin-validator
+```
+
+```typescript
 import {
     isValidGTIN,
+    isValidPrefixOfGTIN,
     isValidCheckDigitOnGTIN,
     isValidStringLengthForGTIN,
     removeGTINLeadingZerosToUpcOrGTIN13,
@@ -22,7 +26,7 @@ import {
     calculateCheckDigitForGTIN,
     generateRandomGTIN,
     generateArrayOfRandomGTINs,
-} from "gtin-validator";
+} from "@linvix-sistemas/gtin-validator";
 ```
 
 ## Examples
@@ -31,7 +35,7 @@ import {
 
 Returns true if the provided productCode is a valid GTIN (valid length and check digit). On invalid productCodes, returns false by default or throws an error if "error" is passed as the second parameter.
 
-```javascript
+```typescript
 import { isValidGTIN } from "gtin-validator";
 
 isValidGTIN("078000053401"); //returns true
@@ -55,7 +59,7 @@ isValidGTIN("00012345678905"); //returns true
 
 Returns true if the provided productCode is a valid GTIN and has a valid check digit. If the check digit is invalid, returns false by default or throws an error if "error" is passed as the second parameter.
 
-```javascript
+```typescript
 import { isValidCheckDigitOnGTIN } from "gtin-validator";
 
 isValidCheckDigitOnGTIN("078000053401"); //returns true
@@ -80,7 +84,7 @@ isValidCheckDigitOnGTIN("00012345678905"); //returns true
 Returns true if the provided productCode is a length for a GTIN (a 8, 12, 13, or 14 string of digits). If the length of the string is invalid, returns false by default or throws an error if "error" is passed as the second parameter.
 This function does NOT check that a productCode has a valid check digit.
 
-```javascript
+```typescript
 import { isValidStringLengthForGTIN } from "gtin-validator";
 
 isValidStringLengthForGTIN("45664"); //returns false
@@ -99,7 +103,7 @@ isValidStringLengthForGTIN(722510035005); //throws error "Invalid GTIN: The prov
 
 Removes leading zeros on valid 13 or 14 digit long GTIN's, returning a shorter valid GTIN if possible. Throws an error if the the provided productCode is not a valid GTIN. Only a valid GTIN with a length of 12-14 digits is acceptable to pass as a productCode param.
 
-```javascript
+```typescript
 import { removeGTINLeadingZerosToUpcOrGTIN13 } from "gtin-validator";
 
 removeGTINLeadingZerosToUpcOrGTIN13("00000012341238"); //returns "000012341238"
@@ -124,7 +128,7 @@ removeGTINLeadingZerosToUpcOrGTIN13("84645456"); //throws error "Invalid product
 
 Returns the GTIN format ("GTIN-8" | "GTIN-12" | "GTIN-13" | "GTIN-14") of the provided productCode or throws an error on an invalid GTIN.
 
-```javascript
+```typescript
 import { getFormatOfGTIN } from "gtin-validator";
 
 getFormatOfGTIN("722510035005"); //returns "GTIN-12"
@@ -142,7 +146,7 @@ getFormatOfGTIN("00012345678906"); //throws error: "Invalid GTIN: GTIN check dig
 
 Returns the GTIN format ("GTIN-8" | "GTIN-12" | "GTIN-13" | "GTIN-14") of the provided productCode after removing its unnecessary leading zeros (runs removeGTINLeadingZerosToUpcOrGTIN13(productCode) before getting the productCode's format). Throws an error on an invalid GTIN.
 
-```javascript
+```typescript
 import { getFormatOfMinifiedGTIN } from "gtin-validator";
 
 getFormatOfMinifiedGTIN("722510035005"); // returns "GTIN-12"
@@ -161,7 +165,7 @@ getFormatOfGTIN(84658555); //throws error: "Invalid GTIN: The provided productCo
 
 Calculates check digit for GTIN strings of digits 7 or 11-13 characters long. Valid productCodeWithoutCheckDigit params are string of digits 7 or 11-13 characters long.
 
-```javascript
+```typescript
 import { calculateCheckDigitForGTIN } from "gtin-validator";
 
 calculateCheckDigitForGTIN("72251003500"); //returns "5"
@@ -183,7 +187,7 @@ calculateCheckDigitForGTIN(123456789012); //throws Error: "Invalid GTIN: The pro
 
 Generates a random GTIN string, including a valid check digit of the type provided in gtinType param ("GTIN-8" | "GTIN-12" | "GTIN-13" | "GTIN-14").
 
-```javascript
+```typescript
 import { generateRandomGTIN } from "gtin-validator";
 
 generateRandomGTIN("GTIN-8"); // returns random 8 character long GTIN with a valid check digit, random example: "12341238"
@@ -204,7 +208,7 @@ Use "numberOfGTINsToGenerate" param to determine how many GTINs to generate.
 
 By default, the guaranteeOnlyUniqueGTINs param is false, meaning the returned array of GTINs can contain duplicate GTINs. Pass true to guarantee each GTIN is unique, however, keep in mind this can dramatically increase the time it takes to generate the GTINs.
 
-```javascript
+```typescript
 import { generateArrayOfRandomGTINs } from "gtin-validator";
 
 generateArrayOfRandomGTINs("Any Valid GTIN", 1234); // returns an array of 1234 GTINs of potentially varying GTIN types. Possibly contains duplicates.
@@ -214,4 +218,4 @@ generateArrayOfRandomGTINs("GTIN-12", 100000); // returns an array of 100,000 GT
 generateArrayOfRandomGTINs("GTIN-13", 123456, true); // returns an array of 123,456 GTIN-13s. All GTINs are unique.
 ```
 
-This package was created and is maintained by the team at [GunCompare](https://guncompare.com/).
+This package was created by [GunCompare](https://guncompare.com/) and maintained by [Linvix Sistemas](https://linvix.com.br);
