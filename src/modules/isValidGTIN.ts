@@ -1,5 +1,5 @@
-import { isValidCheckDigitOnGTIN } from "./isValidCheckDigitOnGTIN"
-import { isValidPrefixOfGTIN } from "./isValidPrefixOfGTIN"
+import { isValidCheckDigitOnGTIN } from "../modules/isValidCheckDigitOnGTIN";
+import { isValidPrefixOfGTIN } from "../modules/isValidPrefixOfGTIN";
 
 /**
  * @description Determines whether the provided productCode is a valid GTIN.
@@ -21,11 +21,8 @@ import { isValidPrefixOfGTIN } from "./isValidPrefixOfGTIN"
  * isValidGTIN("00012345678905") //returns true
  */
 
-export function isValidGTIN(
-  productCode: string,
-  returnBooleanOrThrowError: "boolean" | "error" = "boolean",
-) {
-  if (!isValidCheckDigitOnGTIN(productCode, returnBooleanOrThrowError)) return false
+export function isValidGTIN(productCode: string, returnBooleanOrThrowError: "boolean" | "error" = "boolean") {
+    if (!isValidCheckDigitOnGTIN(productCode, returnBooleanOrThrowError)) return false;
 
-  return isValidPrefixOfGTIN(productCode, returnBooleanOrThrowError)
+    return isValidPrefixOfGTIN(productCode, returnBooleanOrThrowError);
 }

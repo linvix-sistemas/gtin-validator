@@ -1,5 +1,5 @@
-import { isValidGTIN } from "./isValidGTIN"
-import { removeGTINLeadingZerosToUpcOrGTIN13 } from "./removeGTINLeadingZerosToUpcOrGTIN13"
+import { isValidGTIN } from "./isValidGTIN";
+import { removeGTINLeadingZerosToUpcOrGTIN13 } from "./removeGTINLeadingZerosToUpcOrGTIN13";
 
 /**
  * @description Returns the GTIN format ("GTIN-8" | "GTIN-12" | "GTIN-13" | "GTIN-14") of the provided productCode after removing its unnecessary leading zeros (runs removeGTINLeadingZerosToUpcOrGTIN13(productCode) before getting the productCode's format). Throws an error on an invalid GTIN.
@@ -17,10 +17,7 @@ import { removeGTINLeadingZerosToUpcOrGTIN13 } from "./removeGTINLeadingZerosToU
  * getFormatOfGTIN(84658555) //throws error: "Invalid GTIN: The provided productCode is not of type string."
  */
 export function getFormatOfMinifiedGTIN(productCode: string) {
-  isValidGTIN(productCode, "error")
-  productCode =
-    productCode.length >= 12
-      ? removeGTINLeadingZerosToUpcOrGTIN13(productCode)
-      : productCode
-  return `GTIN-${productCode.length}`
+    isValidGTIN(productCode, "error");
+    productCode = productCode.length >= 12 ? removeGTINLeadingZerosToUpcOrGTIN13(productCode) : productCode;
+    return `GTIN-${productCode.length}`;
 }

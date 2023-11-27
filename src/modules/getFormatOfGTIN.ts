@@ -1,4 +1,4 @@
-import { isValidGTIN } from "./isValidGTIN"
+import { isValidGTIN } from "./isValidGTIN";
 
 /**
  * @description Returns the GTIN format ("GTIN-8" | "GTIN-12" | "GTIN-13" | "GTIN-14") of the provided productCode or throws an error on an invalid GTIN.
@@ -14,6 +14,6 @@ import { isValidGTIN } from "./isValidGTIN"
  * getFormatOfGTIN(84658555) //throws error: "Invalid GTIN: The provided productCode is not of type string."
  */
 export function getFormatOfGTIN(productCode: string) {
-  isValidGTIN(productCode, "error")
-  return `GTIN-${productCode.length}`
+    isValidGTIN(productCode, "error");
+    return `GTIN-${productCode.length}`;
 }

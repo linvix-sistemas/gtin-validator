@@ -1,21 +1,21 @@
-import { isValidCheckDigitOnGTIN } from "./ExportsAndTests/isValidCheckDigitOnGTIN"
-import { isValidStringLengthForGTIN } from "./ExportsAndTests/isValidStringLengthForGTIN"
-import { removeGTINLeadingZerosToUpcOrGTIN13 } from "./ExportsAndTests/removeGTINLeadingZerosToUpcOrGTIN13"
-import { isValidGTIN } from "./ExportsAndTests/isValidGTIN"
-import { getFormatOfGTIN } from "./ExportsAndTests/getFormatOfGTIN"
-import { getFormatOfMinifiedGTIN } from "./ExportsAndTests/getFormatOfMinifiedGTIN"
-import { calculateCheckDigitForGTIN } from "./ExportsAndTests/calculateCheckDigitForGTIN"
-import { generateRandomGTIN } from "./ExportsAndTests/generateRandomGTIN"
-import { generateArrayOfRandomGTINs } from "./ExportsAndTests/generateArrayOfRandomGTINs"
+import { isValidCheckDigitOnGTIN } from "./modules/isValidCheckDigitOnGTIN";
+import { isValidStringLengthForGTIN } from "./modules/isValidStringLengthForGTIN";
+import { removeGTINLeadingZerosToUpcOrGTIN13 } from "./modules/removeGTINLeadingZerosToUpcOrGTIN13";
+import { isValidGTIN } from "./modules/isValidGTIN";
+import { getFormatOfGTIN } from "./modules/getFormatOfGTIN";
+import { getFormatOfMinifiedGTIN } from "./modules/getFormatOfMinifiedGTIN";
+import { calculateCheckDigitForGTIN } from "./modules/calculateCheckDigitForGTIN";
+import { generateRandomGTIN } from "./modules/generateRandomGTIN";
+import { generateArrayOfRandomGTINs } from "./modules/generateArrayOfRandomGTINs";
 
 export {
-  isValidGTIN,
-  isValidCheckDigitOnGTIN,
-  isValidStringLengthForGTIN,
-  removeGTINLeadingZerosToUpcOrGTIN13,
-  getFormatOfGTIN,
-  getFormatOfMinifiedGTIN,
-  calculateCheckDigitForGTIN,
-  generateRandomGTIN,
-  generateArrayOfRandomGTINs,
-}
+    isValidGTIN,
+    isValidCheckDigitOnGTIN,
+    isValidStringLengthForGTIN,
+    removeGTINLeadingZerosToUpcOrGTIN13,
+    getFormatOfGTIN,
+    getFormatOfMinifiedGTIN,
+    calculateCheckDigitForGTIN,
+    generateRandomGTIN,
+    generateArrayOfRandomGTINs,
+};

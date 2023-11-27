@@ -1,5 +1,5 @@
-import { errorsList } from "./errorsList"
-import { isStringOfDigits } from "./helpersFunctions"
+import { errorsList } from "./errorsList";
+import { isStringOfDigits } from "./helpersFunctions";
 
 /**
  * @description Determines whether productCode (including check digit) is a valid length for a GTIN. Does NOT check whether check digit is valid.
@@ -16,15 +16,15 @@ import { isStringOfDigits } from "./helpersFunctions"
  */
 
 export function isValidStringLengthForGTIN(
-  productCode: string,
-  returnBooleanOrThrowError: "boolean" | "error" = "boolean",
+    productCode: string,
+    returnBooleanOrThrowError: "boolean" | "error" = "boolean",
 ) {
-  if (!isStringOfDigits(productCode, returnBooleanOrThrowError)) return false
+    if (!isStringOfDigits(productCode, returnBooleanOrThrowError)) return false;
 
-  if (/^(\d{12,14}|\d{8})$/.test(productCode)) return true
+    if (/^(\d{12,14}|\d{8})$/.test(productCode)) return true;
 
-  if (returnBooleanOrThrowError === "error") {
-    throw new Error(errorsList.invalidStringLengthForGTIN)
-  }
-  return false
+    if (returnBooleanOrThrowError === "error") {
+        throw new Error(errorsList.invalidStringLengthForGTIN);
+    }
+    return false;
 }

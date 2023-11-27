@@ -1,5 +1,5 @@
-import { errorsList } from "./errorsList"
-import { isString } from "./helpersFunctions"
+import { errorsList } from "./errorsList";
+import { isString } from "./helpersFunctions";
 
 /**
  * @description Calculates check digit for GTIN strings of digits 7 or 11-13 characters long.
@@ -20,20 +20,20 @@ import { isString } from "./helpersFunctions"
  * @returns check digit string
  */
 export function calculateCheckDigitForGTIN(productCodeWithoutCheckDigit: string) {
-  isString(productCodeWithoutCheckDigit, "error")
-  if (/^(\d{11,13}|\d{7})$/.test(productCodeWithoutCheckDigit)) {
-    let checkSum = 0
-    const digitArr = productCodeWithoutCheckDigit.split("").reverse()
-    digitArr.map((digit, n) => {
-      if ((n + 1) % 2 === 0) {
-        checkSum += Number(digit)
-      } else {
-        checkSum += Number(digit) * 3
-      }
-    })
-    const calculatedCheckDigit = (10 - (checkSum % 10)) % 10
-    return calculatedCheckDigit.toString()
-  } else {
-    throw new Error(errorsList.invalidStringLengthForCalculateCheckDigitForGTIN)
-  }
+    isString(productCodeWithoutCheckDigit, "error");
+    if (/^(\d{11,13}|\d{7})$/.test(productCodeWithoutCheckDigit)) {
+        let checkSum = 0;
+        const digitArr = productCodeWithoutCheckDigit.split("").reverse();
+        digitArr.map((digit, n) => {
+            if ((n + 1) % 2 === 0) {
+                checkSum += Number(digit);
+            } else {
+                checkSum += Number(digit) * 3;
+            }
+        });
+        const calculatedCheckDigit = (10 - (checkSum % 10)) % 10;
+        return calculatedCheckDigit.toString();
+    } else {
+        throw new Error(errorsList.invalidStringLengthForCalculateCheckDigitForGTIN);
+    }
 }
