@@ -8,17 +8,21 @@ on:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
+permissions:
+  contents: read
+  id-token: write # Obrigatorio para autenticação OIDC
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3.8.1
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18.x
-          registry-url: https://registry.npmjs.org/
+          node-version: "18"
+      - run: npm install -g npm@latest
       - run: yarn install
       - run: yarn build
-      - run: yarn publish --access public
+      - run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NPM_CONFIG_PROVENANCE: "true"
